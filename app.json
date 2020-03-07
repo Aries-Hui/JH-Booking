@@ -1,0 +1,44 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/heart/heart",
+        "pages/cost/cost",
+        "pages/costList/costList",
+        "pages/order/order"
+    ],
+    "tabBar": {
+        "color": "#000",
+        "selectedColor": "##FF6633",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "./images/booking-off.png",
+                "selectedIconPath": "./images/booking-on.png"
+            },
+            {
+                "pagePath": "pages/heart/heart",
+                "text": "心旅",
+                "iconPath": "./images/heart-off.png",
+                "selectedIconPath": "./images/heart-on.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "预算",
+                "iconPath": "./images/order-off.png",
+                "selectedIconPath": "./images/order-on.png"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "金灰小账本",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

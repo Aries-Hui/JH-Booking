@@ -1,0 +1,55 @@
+<!--pages/costList/costList.wxml-->
+<wxs module = 'money' src = '../../filter/money.wxs'/>
+<wxs module = 'date' src = '../../filter/date.wxs'/>
+<van-tabs active="{{ active }}" swipeable sticky animated bind:change="bindTabsChange">
+    <block wx:for="{{tabs}}" wx:key='index'>
+        <van-tab title="{{item.name}}" >
+            <view class="body">
+                <view class="tab-header">
+                    <view class="tab-header-top">
+                        {{item.name}}
+                    </view>
+                    <view class="tab-header-center">
+                        <view class="surplus-font">/剩余预算金额</view>
+                        <view class="surplus-num">{{money.formatMoney(item.budget-item.cost)}}</view>
+                    </view>
+                    <view class="tab-header-bottom">
+                        <view class="budget">{{money.formatMoney(item.budget)}} /总预算金额</view>
+                    </view>
+                </view>
+                <view class="time-picker">
+                    <picker data-field="date" mode="date" value="{{date}}" start="2020-01-01" end="2120-12-31" data-index="1" bindchange="bindDateChange" class="picker">
+                        <view class="weui-input">{{date_s}}</view>
+                        <view class="picker-desc">起始时间</view>
+                    </picker>
+                    <picker data-field="date" mode="date" value="{{date}}" start="2020-01-01" end="2120-12-31" data-index="2" bindchange="bindDateChange" class="picker">
+                        <view class="weui-input">{{date_e}}</view>
+                        <view class="picker-desc">结束时间</view>
+                    </picker>
+                </view>
+                <view class="cell-top">账单列表</view>
+                <view class="content">
+                    <van-cell-group>
+                        <block wx:for="{{costlist}}" wx:key = "index">
+                            <van-cell title="{{item.name}} - {{item.payName}}" value="{{money.formatMoney(item.price)}}" 
+                            label="{{date.dateFormat(item.date,'YYYY年MM月dd日')}}"/>
+                        </block>
+                    </van-cell-group>
+                </view>
+            </view>
+        </van-tab>
+    </block>
+</van-tabs>
+
+<mp-icon type="field" icon="pencil" color="black" size="{{25}}" class="pencil" bindtap="openConfirm"/>
+
+<mp-dialog title="修改该项预算金额" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}" >
+    <input 
+        type="digit" 
+        cursor="{{-1}}" 
+        placeholder="{{money.formatMoney(budget)}}" 
+        value="{{budget_new}}" 
+        bindinput="bindRegInput" 
+        bindblur="bindInputBlur"
+        bindfocus="bindInputFocus"/>
+</mp-dialog>

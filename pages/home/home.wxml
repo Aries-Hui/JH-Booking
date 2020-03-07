@@ -1,0 +1,78 @@
+<!--pages/home/home.wxml-->
+<wxs module = 'money' src = '../../filter/money.wxs'/>
+<view class="body">
+    <view wx:if = "{{false}}" class="box-transition {{left?'active-flex right':'no-active-flex left'}}" bindtap="viewTap" data-direction="left">
+        <view class="{{left?'open-top':'close-top'}}" style="flex-direction: row-reverse;">
+            <view class="avatar {{left?'big-avatar open-avatar':'small-avatar close-avatar'}}">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="{{left?'open-username':'close-username'}} font-size-transiton">
+                <open-data type="userNickName"></open-data>
+            </view>
+        </view>
+        <view class="iconView">
+            <view class="iconView-e" bindtap="moneyTap" data-direction="left" data-type="0">
+                <text class="{{left?'open-icon icon-zhifubao-color':'close-icon'}} iconfont icon-zhifubao"></text>
+                <text class="{{left? 'open-font': 'close-font'}} icon-zhifubao-color font-size-transiton ">{{money.formatMoney(zhifubao)}}</text>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="left" data-type="1">
+                <text class="{{left?'open-icon icon-weixin-color':'close-icon'}} iconfont icon-weixin"></text>
+                <text class="{{left? 'open-font': 'close-font'}} icon-weixin-color font-size-transiton ">{{money.formatMoney(zhifubao)}}</text>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="left" data-type="2">
+                <text class="{{left?'open-icon':'close-icon'}} iconfont icon-yinhangka"></text>
+                <text class="{{left? 'open-font': 'close-font'}} font-size-transiton ">{{money.formatMoney(zhifubao)}}</text>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="left" data-type="3">
+                <text class="{{left?'open-icon':'close-icon'}} iconfont icon-cash"></text>
+                <text class="{{left? 'open-font': 'close-font'}} font-size-transiton ">{{money.formatMoney(zhifubao)}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="box-transition {{left?'no-active-flex left':'active-flex right'}}" bindtap="viewTap" data-direction="right">
+        <view class="{{left?'close-top':'open-top'}}">
+            <image class="avatar {{left?'small-avatar close-avatar':'big-avatar open-avatar'}}" 
+                    src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqxFroyToJ0icon8Dzib5KtZO5fe8srRibxLL1mWGx6iaxEGcvcH8y2NpUWNuWCf1Hc7Lgstfshd5gjxg/132" />
+            <view class="{{left?'close-username':'open-username'}} font-size-transiton">
+                名字...
+            </view>
+        </view>
+        <view class="iconView">
+            <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="0">
+                <text class="{{left?'close-icon':'open-icon icon-zhifubao-color'}} iconfont icon-zhifubao"></text>
+                <view class="{{!left? 'open-font': 'close-font'}} icon-zhifubao-color font-size-transiton ">
+                    {{money_data[0].name == "支付宝" ? money.formatMoney(money_data[0].money)  : money.formatMoney(0)}}
+                </view>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="1">
+                <text class="{{left?'close-icon':'open-icon icon-weixin-color'}} iconfont icon-weixin"></text>
+                <view class="{{!left? 'open-font': 'close-font'}} icon-weixin-color font-size-transiton ">
+                    {{money_data[1].name == "微信" ? money.formatMoney(money_data[1].money)  :  money.formatMoney(0)}}
+                </view>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="2">
+                <text class="{{left?'close-icon':'open-icon'}} iconfont icon-yinhangka"></text>
+                <view class="{{!left? 'open-font': 'close-font'}} font-size-transiton ">
+                    {{money_data[2].name == "银行卡" ? money.formatMoney(money_data[2].money)  :  money.formatMoney(0)}}
+                </view>
+            </view>
+            <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="3">
+                <text class="{{left?'close-icon':'open-icon'}} iconfont icon-cash"></text>
+                <view class="{{!left? 'open-font': 'close-font'}} font-size-transiton ">
+                    {{money_data[3].name == "现金" ? money.formatMoney(money_data[3].money)  :  money.formatMoney(0)}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 授权半屏弹窗 -->
+<mp-halfScreenDialog 
+    bindbuttontap="buttontap"
+    bindGetUserInfo="bindGetUserInfo"
+    show="{{showDialog}}"
+    title="微信授权" 
+    desc="申请获得以下权限"
+    tips="获得你的昵称、头像、地区及性别"
+    buttons="{{buttons}}"
+></mp-halfScreenDialog>

@@ -1,0 +1,86 @@
+/* pages/costList/costList.wxss */
+.body{
+    display:flex;
+    flex-direction: column;
+    height:calc(100vh - 44px);
+    overflow: hidden;
+}
+.tab-header{
+    height: 250rpx;
+    background-color: #eee;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+.tab-header-top{
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48rpx;
+}
+.tab-header-center{
+    flex: 5;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -10rpx;
+}
+.tab-header-bottom{
+    flex: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.surplus-font{
+    font-size: 24rpx;
+    color: #bbb;
+    align-self: flex-end;
+}
+.surplus-num{
+    font-size: 48rpx;
+    color: #000;
+}
+.budget{
+    font-size: 24rpx;
+    color: #bbb;
+}
+.content{
+    flex: 1;
+    overflow: auto;
+    background-color: #fafafa;
+}
+.time-picker{
+    height: 88rpx;
+    width: 100vw;
+    display: flex;
+}
+.picker{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+.picker:not(:last-child){
+    border-right: 1px solid #eee;
+}
+.picker-desc{
+    text-align: center;
+    font-size: 18rpx;
+    color: #aaa;
+}
+.pencil{
+    position: absolute;
+    top: 52px;
+    right: 16px;
+}
+.cell-top{
+    padding: 14rpx 0 14rpx 16px;
+    font-size: 24rpx;
+    color: #bbb;
+    background-color: #fafafa;
+}

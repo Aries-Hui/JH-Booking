@@ -1,0 +1,122 @@
+/* pages/home/home.wxss */
+.body{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 左右布局，动画 */
+.left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: #eeeeee;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: white;
+}
+.active-flex{
+  flex:9;
+}
+.no-active-flex{
+  flex: 1;
+}
+
+/* 左右公共样式 */
+.avatar{
+  background-color: white;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.small-avatar{
+  width: 56.25rpx;
+  height: 56.25rpx;
+}
+.big-avatar{
+  width: 135rpx;
+  height: 135rpx;
+}
+.iconView{
+  width: 100%;
+  flex: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.iconView-e{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 收缩部分布局 */
+.close-avatar{
+  margin: 5%;
+}
+.close-top{
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.close-username{
+  font-size: 0rpx;
+  display: flex;
+  align-items: center;
+}
+.close-icon{
+  font-size: 36rpx;
+  padding-bottom: 20%;
+}
+.close-font{
+  font-size: 0rpx;
+  margin-bottom: 0%;
+}
+
+
+/* 展开部分布局 */
+.open-avatar{ 
+  justify-content: center;
+  margin: 5%;
+}
+.open-top{
+  display: flex;
+  flex-direction: row;
+  background-color: #f5f5f5;
+}
+.open-username{
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+}
+.open-icon{
+  font-size: 48rpx;
+  padding-bottom: 2%;
+}
+.open-font{
+  font-size: 48rpx;
+  margin-bottom: 10%;
+}
+
+/* css 渐变 */
+.box-transition {
+  transition: flex 0.5s;
+}
+.font-size-transiton{
+  transition: font-size 0.5s;
+}
+
+/* icon颜色 */
+.icon-zhifubao-color{
+  color: #108ee9;
+}
+.icon-weixin-color{
+  color: #68db49;
+}

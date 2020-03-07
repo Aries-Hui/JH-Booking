@@ -1,0 +1,32 @@
+<!--pages/order/order.wxml-->
+<wxs module = 'money' src = '../../filter/money.wxs'/>
+<view class="body">
+    <view class="header">
+        <view class="header-top">
+            <view class="surplus-font">/剩余预算金额</view>
+            <view class="surplus-num">{{money.formatMoney(budget-cost)}}</view>
+        </view>
+        <view class="header-bottom">
+            <view class="budget">{{money.formatMoney(budget)}} /总预算金额</view>
+        </view>
+    </view>
+    <view class="content">
+        <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+            <block wx:for='{{tree}}' wx:for-item="tree" wx:key='{{tree.id}}'>
+                <van-collapse-item title="{{tree.name}}" name="{{index}}">
+                    <block wx:for='{{tree.node}}' wx:key='{{item.id}}' wx:for-index="idx">
+                        <van-cell title="{{item.name}}" data-index='{{index}}' data-idx="{{idx}}" value="{{money.formatMoney(item.budget-item.cost)}}"
+                        value-class="{{item.budget-item.cost<0?'red':''}}" bindtap='toCostList' clickable />
+                    </block>
+                </van-collapse-item>
+            </block>
+            <van-collapse-item title="收入账单" name="999">
+                <block wx:for='{{costin}}' wx:key='{{item.id}}' >
+                    <van-cell title="{{item.name}}" data-index='{{index}}'  bindtap='toCostInList' clickable />
+                </block>
+            </van-collapse-item>
+        </van-collapse>
+    </view>
+</view>
+
+

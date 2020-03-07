@@ -1,0 +1,47 @@
+<!--pages/cost/cost.wxml-->
+<mp-form-page title="账单记录">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cells title="收入/支出(单选项)">
+            <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+                <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+            </mp-checkbox-group>
+        </mp-cells>
+        <mp-cells title="账单表单" footer="请仔细确认输入是否有误">
+            <mp-cell prop="name" title="昵称" ext-class="">
+                <input 
+                    bindinput="bindNameInput" 
+                    data-field="name" 
+                    placeholder="请输入用途名称以便记忆"/>
+            </mp-cell>
+            <mp-cell prop="money" title="金额" ext-class="">
+                <input 
+                    type="digit" 
+                    value="{{cost_new}}"   
+                    bindinput="bindRegInput" 
+                    bindblur="bindInputBlur"
+                    bindfocus="bindInputFocus"
+                    data-field="money" 
+                    placeholder="请输入金额"/>
+            </mp-cell>
+            <mp-cell prop="date" title="日期" ext-class="">
+                <picker data-field="date" mode="date" value="{{date}}" start="2020-01-01" end="2120-12-31" bindchange="bindDateChange">
+                    <view class="weui-input">{{date}}</view>
+                </picker>
+            </mp-cell>
+            <mp-cell prop="date" title="收支渠道" ext-class="">
+                <picker bindchange="bindChannelChange" value="{{channelIndex}}" range="{{channel}}">
+                    <view class="weui-input">{{channel[channelIndex]}}</view>
+                </picker>
+            </mp-cell>
+            <mp-cell prop="date" title="类别" ext-class="" wx:if="{{formData.radio == '1'}}">
+                <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{catalogIndex}}" range="{{catalog_choose_column}}">
+                    <view class="weui-input">{{catalog_choose_name}}</view>
+                </picker>
+            </mp-cell>
+        </mp-cells>
+    </mp-form>
+    <view slot="button">
+        <button type="primary" bindtap="submitForm">确定</button>
+    </view>
+</mp-form-page>
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
