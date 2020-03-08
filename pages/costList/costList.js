@@ -37,6 +37,8 @@ Page({
 
     tapDialogButton(e) {
         if(e.detail.index == 1){
+            var budget_old = this.data.tabs[this.data.active].budget
+            
             var data = {
                 catalogid: this.data.tabs[this.data.active].id,
                 budget: this.data.budget_new_num
@@ -47,6 +49,8 @@ Page({
                     dialogShow: false,
                     [budget]: this.data.budget_new_num
                 })
+                const eventChannel = this.getOpenerEventChannel()
+                eventChannel.emit('fromCostList', {budget: this.data.budget_new_num, active: this.data.active, budget_old: budget_old});
             })
         }else{
             this.setData({

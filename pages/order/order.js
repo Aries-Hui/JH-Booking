@@ -24,6 +24,17 @@ Page({
     var that = this
     wx.navigateTo({
       url: '../costList/costList',
+      events: {
+          // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+          fromCostList: function(data) {
+            var budget_ = "tree[" + event.currentTarget.dataset.index + "].node[" + data.active + "].budget"
+            
+            that.setData({
+              [budget_] : data.budget,
+              ['budget']: that.data.budget + (data.budget - data.budget_old)
+            })
+          },
+      },
       success: function(res) {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('toCostList', 
@@ -54,7 +65,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
