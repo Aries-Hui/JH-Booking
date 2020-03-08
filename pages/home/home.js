@@ -66,10 +66,15 @@ Page({
           // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
           fromCost: function(data) {
             var money = that.data.money_data
+            if(money[data.data.payid - 1] == undefined) {
+              money[data.data.payid - 1] = {}
+              money[data.data.payid - 1].money = 0
+            }
+            money[data.data.payid - 1].payId = data.data.payid
             if(data.data.radio == "0"){
-              money[data.data.payid - 1].money += (data.data.price - 0)
+              money[data.data.payid - 1].money += parseInt(data.data.price)
             }else if (data.data.radio == "1"){
-              money[data.data.payid - 1].money -= (data.data.price - 0)
+              money[data.data.payid - 1].money -= parseInt(data.data.price)
             }
             that.setData({
               money_data: money

@@ -42,9 +42,10 @@ Page({
                 budget: this.data.budget_new_num
             }
             wechat.post("/Cost/budgetIn",data,1).then( () => {
+                var budget = "tabs[" + this.data.active + "].budget"
                 this.setData({
                     dialogShow: false,
-                    budget: this.data.budget_new_num
+                    [budget]: this.data.budget_new_num
                 })
             })
         }else{
@@ -108,7 +109,8 @@ Page({
         eventChannel.on('toCostList', function(data) {
             that.setData({
                 active: data.index,
-                tabs: data.array
+                tabs: data.array,
+                budget_new: money.formatMoney(data.array[data.index].budget)
             })
           })
         var date = new Date();

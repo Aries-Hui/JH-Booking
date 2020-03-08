@@ -5,7 +5,7 @@
  * @return money 格式化金额
  */ 
 const formatMoney =  num  => {
-  if (num == 0) return money = "¥0.00元"; 
+  if (num == 0) return "¥0.00元"; 
   if (num) {
     if (isNaN(num)) {
       console.info('金额中含有不能识别的字符');
@@ -14,7 +14,7 @@ const formatMoney =  num  => {
     
     num = typeof num == 'string' ? parseFloat(num) : num // 判断是否是字符串如果是字符串转成数字
 
-    bool = false
+    var bool = false
     if(num<0){
       bool = true
       num = Math.abs(num)

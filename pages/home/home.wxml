@@ -41,25 +41,25 @@
             <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="0">
                 <text class="{{left?'close-icon':'open-icon icon-zhifubao-color'}} iconfont icon-zhifubao"></text>
                 <view class="{{!left? 'open-font': 'close-font'}} icon-zhifubao-color font-size-transiton ">
-                    {{money_data[0].name == "支付宝" ? money.formatMoney(money_data[0].money)  : money.formatMoney(0)}}
+                    {{money_data[0].payId == 1 ? money.formatMoney(money_data[0].money)  : money.formatMoney(0)}}
                 </view>
             </view>
             <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="1">
                 <text class="{{left?'close-icon':'open-icon icon-weixin-color'}} iconfont icon-weixin"></text>
                 <view class="{{!left? 'open-font': 'close-font'}} icon-weixin-color font-size-transiton ">
-                    {{money_data[1].name == "微信" ? money.formatMoney(money_data[1].money)  :  money.formatMoney(0)}}
+                    {{money_data[1].payId == 2 ? money.formatMoney(money_data[1].money)  :  money.formatMoney(0)}}
                 </view>
             </view>
             <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="2">
                 <text class="{{left?'close-icon':'open-icon'}} iconfont icon-yinhangka"></text>
                 <view class="{{!left? 'open-font': 'close-font'}} font-size-transiton ">
-                    {{money_data[2].name == "银行卡" ? money.formatMoney(money_data[2].money)  :  money.formatMoney(0)}}
+                    {{money_data[2].payId == 3 ? money.formatMoney(money_data[2].money)  :  money.formatMoney(0)}}
                 </view>
             </view>
             <view class="iconView-e" bindtap="moneyTap" data-direction="right" data-type="3">
                 <text class="{{left?'close-icon':'open-icon'}} iconfont icon-cash"></text>
                 <view class="{{!left? 'open-font': 'close-font'}} font-size-transiton ">
-                    {{money_data[3].name == "现金" ? money.formatMoney(money_data[3].money)  :  money.formatMoney(0)}}
+                    {{money_data[3].payId == 4 ? money.formatMoney(money_data[3].money)  :  money.formatMoney(0)}}
                 </view>
             </view>
         </view>
